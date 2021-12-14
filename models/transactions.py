@@ -1,5 +1,4 @@
 
-
 class Transaction:
     def __init__(self, amount, tag, merchant, when, comments, id = None):
         self.amount = amount
