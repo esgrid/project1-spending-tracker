@@ -38,8 +38,8 @@ def create_transaction():
     tag = tag_repository.select(form['tag_id'])
     when_original = [int(x) for x in form['when'].split('-')]
     when = date(when_original[0], when_original[1], when_original[2])
-    description = form['description']
-    transaction = Transaction(amount, tag, merchant, when, description)
+    comments = form['comments']
+    transaction = Transaction(amount, tag, merchant, when, comments)
     transaction_repository.save(transaction)
     return redirect('/transactions')
 
@@ -60,8 +60,8 @@ def update_transaction(id):
     tag = tag_repository.select(form['tag_id'])
     when_original = [int(x) for x in form['when'].split('-')]
     when = date(when_original[0], when_original[1], when_original[2])
-    description = form['description']
-    transaction = Transaction(amount, tag, merchant, when, description, id)
+    comments = form['comments']
+    transaction = Transaction(amount, tag, merchant, when, comments, id)
     transaction_repository.update(transaction)
     return redirect('/transactions')    
 

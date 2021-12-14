@@ -1,6 +1,6 @@
 
 class Budget:
 
-    def __init__(self, budget, id):
-        self.budget = budget
+    def __init__(self, amount, id):
+        self.amount = amount
         self.id = id

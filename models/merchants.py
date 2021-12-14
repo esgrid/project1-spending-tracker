@@ -1,7 +1,7 @@
 
 class Merchant:
 
-    def __init__(self, name, active, id):
+    def __init__(self, name, active, id = None):
         self.name = name
         self.active = active
         self.id = id
