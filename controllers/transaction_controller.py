@@ -36,7 +36,7 @@ def create_transaction():
     amount = form['amount']
     merchant = merchant_repository.select(form['merchant_id'])
     tag = tag_repository.select(form['tag_id'])
-    when_original = [int(x) for x in form['when'].split('-')]
+    when_original = [int(x) for x in form['fecha'].split('-')]
     when = date(when_original[0], when_original[1], when_original[2])
     comments = form['comments']
     transaction = Transaction(amount, tag, merchant, when, comments)
@@ -58,7 +58,7 @@ def update_transaction(id):
     amount = form['amount']
     merchant = merchant_repository.select(form['merchant_id'])
     tag = tag_repository.select(form['tag_id'])
-    when_original = [int(x) for x in form['when'].split('-')]
+    when_original = [int(x) for x in form['fecha'].split('-')]
     when = date(when_original[0], when_original[1], when_original[2])
     comments = form['comments']
     transaction = Transaction(amount, tag, merchant, when, comments, id)

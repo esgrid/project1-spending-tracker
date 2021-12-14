@@ -28,6 +28,6 @@ CREATE TABLE transactions (
     amount FLOAT,
     tag_id INT REFERENCES tags(id),
     merchant_id INT REFERENCES merchants(id),
-    when DATE,
-    description VARCHAR(255),
+    fecha DATE,
+    description VARCHAR(255)
 );

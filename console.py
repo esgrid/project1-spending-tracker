@@ -17,9 +17,12 @@ budget_repository.delete_all()
 
 
 for i in range(3):
-    merchant_repository.save(Merchant('Merchant ' + str(i), True if i % 2 == 0 else False))
+    name = 'Merchant ' + str(i)
+    active = True if i % 2 == 0 else False
+    merchant_repository.save(Merchant(name, active))
 
 tags = ['groceries', 'travel', 'entertainment', 'books', 'take aways', 'gadgets']
 
-for t in tags:
-    tag_repository.save(Tag(t.capitalize, True if tags.index(i) % 2 == 2 else False))
+for i, j in enumerate(tags):
+    active = True if i % 2 == 0 else False
+    tag_repository.save(Tag(j.capitalize(), active))

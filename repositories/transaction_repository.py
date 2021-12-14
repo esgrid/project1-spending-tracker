@@ -6,26 +6,26 @@ import repositories.merchant_repository as merchant_repository
 import repositories.tag_repository as tag_repository
 
 def save(transaction):
-    sql = "INSERT INTO transactions (amount, merchant_id, tag_id, when, comments) VALUES (%s, %s, %s, %s, %s) RETURNING id"
-    values = [transaction.amount, transaction.merchant.id, transaction.tag.id, transaction.when, transaction.comments]
+    sql = "INSERT INTO transactions (amount, merchant_id, tag_id, fecha, comments) VALUES (%s, %s, %s, %s, %s) RETURNING id"
+    values = [transaction.amount, transaction.merchant.id, transaction.tag.id, transaction.fecha, transaction.comments]
     results = run_sql(sql, values)
     transaction.id = results[0]['id']
     return transaction
 
 def select_all():
     results = run_sql("SELECT * FROM transactions")
-    return [Transaction(r['amount'], tag_repository.select(r['tag_id']), merchant_repository.select(r['merchant_id']), r['when'], r['comments'], r['id']) for r in results]
+    return [Transaction(r['amount'], tag_repository.select(r['tag_id']), merchant_repository.select(r['merchant_id']), r['fecha'], r['comments'], r['id']) for r in results]
 
 def select(id):
     transaction = None
     result = run_sql("SELECT * FROM transactions WHERE id = %s", [id])[0]
     if result is not None:
-        transaction = Transaction(result['amount'], result['tag'], result['merchant'], result['when'], result['comments'], result['id'])
+        transaction = Transaction(result['amount'], result['tag'], result['merchant'], result['fecha'], result['comments'], result['id'])
     return transaction
 
 def update(transaction):
-    sql = 'UPDATE transactions SET (amount, merchant_id, tag_id, when, comments) = (%s, %s, %s, %s, %s) WHERE id = %s'
-    values = [transaction.amount, transaction.merchant.id, transaction.tag.id, transaction.when, transaction.comments, transaction.id]
+    sql = 'UPDATE transactions SET (amount, merchant_id, tag_id, fecha, comments) = (%s, %s, %s, %s, %s) WHERE id = %s'
+    values = [transaction.amount, transaction.merchant.id, transaction.tag.id, transaction.fecha, transaction.comments, transaction.id]
     run_sql(sql, values)
 
 def delete_all():

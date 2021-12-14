@@ -1,9 +1,9 @@
 
 class Transaction:
-    def __init__(self, amount, tag, merchant, when, comments, id = None):
+    def __init__(self, amount, tag, merchant, fecha, comments, id = None):
         self.amount = amount
         self.tag = tag
         self.merchant = merchant
-        self.when = when
+        self.fecha = fecha
         self.comments = comments
         self.id = id

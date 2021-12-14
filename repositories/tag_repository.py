@@ -13,12 +13,6 @@ def select_all():
     results = run_sql("SELECT * FROM tags")
     return [Tag(r['name'], r['active'], r['id']) for r in results]
 
-def delete_all():
-    run_sql("DELETE FROM tags")
-
-def delete(id):
-    run_sql("DELETE FROM tags WHERE id = %s", [id])
-
 def select(id):
     tag = None
     result = run_sql("SELECT * FROM tags WHERE id = %s", [id])[0]
@@ -28,4 +22,15 @@ def select(id):
 
 def transactions(tag):
     results = run_sql('SELECT * FROM transactions WHERE tag_id = %s', [tag.id])
-    return [Transaction(r['amount'], tag, merchant_repository.select(r['merchant_id']), r['when'], r['comments'], r['id']) for r in results]
+    return [Transaction(r['amount'], tag, merchant_repository.select(r['merchant_id']), r['fecha'], r['comments'], r['id']) for r in results]
+
+def update(tag):
+    sql = 'UPDATE tags SET (name, active) = (%s, %s) WHERE id = %s'
+    values = [tag.name, tag.active, tag.id]
+    run_sql(sql, values)
+
+def delete_all():
+    run_sql("DELETE FROM tags")
+
+def delete(id):
+    run_sql("DELETE FROM tags WHERE id = %s", [id])
