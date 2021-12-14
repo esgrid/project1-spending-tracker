@@ -21,7 +21,7 @@ def select(id):
     return merchant
 
 def transactions(merchant):
-    results = run_sql('SELECT * FROM transactions WHERE tag_id = %s', [merchant.id])
+    results = run_sql('SELECT * FROM transactions WHERE merchant_id = %s', [merchant.id])
     return [Transaction(r['amount'], tag_repository.select(r['tag_id']), merchant.id, r['fecha'], r['comments'], r['id']) for r in results]
 
 def update(merchant):

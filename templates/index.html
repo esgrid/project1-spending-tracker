@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-Welcome to your transactions.    
+<article class = "budget">
+    <header>
+        <h1>Welcome to your spending tracker app</h1>
+    </header>
+    <main>
+        <form action = "/budget" method = "post">
+            <div>
+                <label for = "budget">My budget is:</label>
+                <input type = "number" id = "budget" name = "budget" placeholder = "£" required autofocus>
+            </div>
+            <button type = "submit">Set Budget</button>
+        </form>
+    </main>
+</article>
 {% endblock %}
