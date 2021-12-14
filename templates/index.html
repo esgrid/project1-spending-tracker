@@ -6,13 +6,17 @@
         <h1>Welcome to your spending tracker app</h1>
     </header>
     <main>
+        {% if budget != '' %}
+            <p>Your budget is £{{budget.alloted}}</p>
+        {% else %}
         <form action = "/budget" method = "post">
             <div>
                 <label for = "budget">My budget is:</label>
-                <input type = "number" id = "budget" name = "budget" placeholder = "£" required autofocus>
+                <input type = "number" step = 0.01 id = "budget" name = "budget" placeholder = "£" required autofocus>
             </div>
             <button type = "submit">Set Budget</button>
-        </form>
+        </form>            
+        {% endif %}
     </main>
 </article>
 {% endblock %}

@@ -3,7 +3,7 @@ from db.run_sql import run_sql
 from models.budget import Budget
 
 def save(budget):
-    results = run_sql('INSERT INTO budget (alloted) VALUES (%s) RETURNING id', [merchant.name, merchant.active])
+    results = run_sql('INSERT INTO budget (alloted) VALUES (%s) RETURNING id', [budget.alloted])
     budget.id = results[0]['id']
     return budget
 

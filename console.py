@@ -15,7 +15,6 @@ merchant_repository.delete_all()
 tag_repository.delete_all()
 budget_repository.delete_all()
 
-
 for i in range(3):
     name = 'Merchant ' + str(i)
     active = True if i % 2 == 0 else False
