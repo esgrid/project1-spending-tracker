@@ -2,19 +2,19 @@
 
 {% block content%}
 
-<form class="form-inline" method = "post">
+<form class="form-inline" method = "post" action = "edit/{{tag.id}}">
     <label for="name">Name:</label>
-    <input type="text" id="name" placeholder="Tag Name" name="name">
+    <input type="text" id="name" placeholder="Tag Name" name="name" value="{{tag.name}}">
     <label>
-      <input type="checkbox" name="active"> Active
+      <input type="checkbox" name="active" {% if tag.active %} checked {% endif %}> Active?: 
     </label>
-    <button type="submit">Add Tag</button>
+    <button type="submit">Update Tag</button>
 </form>
 
 <!-- <ul> -->
-    <h1>Tags</h1>
+    <h1>Transactions</h1>
 
-    <table id = "merchants-tags">
+    <!-- <table id = "tags-tags">
     <tr>
         <th>Tag</th>
         <th>Active Status</th>
@@ -33,7 +33,7 @@
             </tr>
 
         {% endfor %}
-    </table>
+    </table> -->
 <!-- </ul> -->
   
 

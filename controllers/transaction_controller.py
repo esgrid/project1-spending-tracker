@@ -63,7 +63,7 @@ def update_transaction(id):
     comments = form['comments']
     transaction = Transaction(amount, tag, merchant, when, comments, id)
     transaction_repository.update(transaction)
-    return redirect('/transactions')    
+    return redirect('/transactions')
 
 # The route POSTS something to be DELETED
 @transactions_blueprint.route('/transactions/delete/<id>', methods = ['POST'])

@@ -2,19 +2,19 @@
 
 {% block content%}
 
-<form class="form-inline" method = "post">
+<form class="form-inline" method = "post" action="edit/{{merchant.id}}">
     <label for="name">Name:</label>
-    <input type="text" id="name" placeholder="Merchant Name" name="name">
+    <input type="text" id="name" placeholder="Merchant Name" name="name" value="{{merchant.name}}">
     <label>
-      <input type="checkbox" name="active"> Active
+      <input type="checkbox" name="active" {% if merchant.active %} checked {% endif %}> Active?: 
     </label>
-    <button type="submit">Add Merchant</button>
+    <button type="submit">Update Merchant</button>
 </form>
 
 <!-- <ul> -->
-    <h1>Merchants</h1>
+    <h1>Transactions</h1>
 
-    <table id = "merchants-tags">
+    <!-- <table id = "merchants-tags">
     <tr>
         <th>Merchant</th>
         <th>Active Status</th>
@@ -33,7 +33,7 @@
             </tr>
 
         {% endfor %}
-    </table>
+    </table> -->
 <!-- </ul> -->
   
 

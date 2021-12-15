@@ -9,7 +9,6 @@ def tags():
     tags = tag_repository.select_all()
     return render_template('tags/index.html', tags = tags)
 
-
 # To be able to show all the transactions with this tag besides the details of the tag
 @tags_blueprint.route('/tags/<id>')
 def show_tag(id):
@@ -23,3 +22,11 @@ def create_tag():
     active = True if 'active' in form else False
     tag_repository.save(Tag(form['name'], active))
     return redirect('/tags')
+
+@tags_blueprint.route('/tags/edit/<id>', methods = ['POST'])
+def update_tag(id):
+    form = request.form
+    name = form['name']
+    active = True if 'active' in form else False
+    tag_repository.update(Tag(name, active, id))
+    return redirect(f'/tags/{id}')
