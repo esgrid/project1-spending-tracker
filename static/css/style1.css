@@ -1,5 +1,9 @@
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 #merchants-tags {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, Helvetica, sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -9,9 +13,9 @@
     padding: 8px;
 }
   
-#merchants-tags tr:nth-child(even){background-color: #f2f2f2;}
+#merchants-tags tr:nth-child(even){background-color: #d8eee7;}
   
-#merchants-tags tr:hover {background-color: #ddd;}
+#merchants-tags tr:hover {background-color: rgb(175, 212, 194);}
   
 #merchants-tags th {
     padding-top: 12px;
@@ -27,5 +31,92 @@
 }
 
 #merchants-tags a:hover {
-    color:rgb(22, 102, 102);
+    color:#56a8c9;
 }
+
+header {
+    background-color: #d8eee7;
+    text-align: center;
+    padding: 10px;
+  }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Style the top navigation bar */
+nav {
+    overflow: hidden;
+    background-color: #56a8c9;
+  }
+  
+  /* Style the topnav links */
+nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change color on hover */
+nav a:hover {
+    background-color: rgb(80, 240, 160);
+    color: rgb(47, 47, 47);
+  }
+
+/* Style the form - display items horizontally */
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+  
+  /* Add some margins for each label */
+  .form-inline label {
+    margin: 5px 10px 5px 0;
+  }
+  
+  /* Style the input fields */
+  .form-inline input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  .form-inline select {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;      
+  }
+
+  /* Style the submit button */
+  button {
+    padding: 10px 20px;
+    background-color: #56a8c9;
+    border: 1px solid #ddd;
+    color: white;
+  }
+  
+  button:hover {
+    background-color: rgb(80, 240, 160);
+  }
+  
+  /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
+  @media (max-width: 800px) {
+    .form-inline input {
+      margin: 10px 0;
+    }
+  
+    .form-inline {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }

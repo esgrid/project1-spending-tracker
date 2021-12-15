@@ -4,14 +4,15 @@
 
     <form class="form-inline" method = "post" action="edit/{{merchant.id}}">
         <label for="name">Name:</label>
-        <input type="text" id="name" placeholder="Merchant Name" name="name" value="{{merchant.name}}">
+        <input type="text" id="name" placeholder="Merchant Name" name="name" value="{{merchant.name}}" required>
         <label>
-            Active?<input type="checkbox" name="active" {% if merchant.active %} checked {% endif %}> 
+            Active? <input type="checkbox" name="active" {% if merchant.active %} checked {% endif %}> 
         </label>
         <button type="submit">Update Merchant</button>
     </form>
+    <p>Merchant <em>{{merchant.name}}</em> is <strong>{% if merchant.active %} active{% else %} inactive{% endif %}</strong>.</p>
 
-    <h1>Transactions {{merchant.name}}</h1>
+    <h1>{{merchant.name}}'s Transactions</h1>
 
     <table id = "merchants-tags">
         <tr>
@@ -20,7 +21,6 @@
             <th>Merchant</th>
             <th>Date</th>
             <th>Comments</th>
-            <th>Delete</th>
         </tr>
         {% for transaction in transactions  %}
         <tr>
@@ -29,11 +29,6 @@
             <td>{{transaction.merchant.name}}</td>
             <td>{{transaction.fecha}}</td>
             <td>{{transaction.comments}}</td>
-            <td>
-                <form class = "delete-form" action = "/" method = "POST">
-                    <button type = "submit">Delete</button>
-                </form>
-            </td>        
         </tr>
         {% endfor %}
     </table>

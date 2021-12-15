@@ -4,14 +4,15 @@
 
     <form class="form-inline" method = "post" action = "edit/{{tag.id}}">
         <label for="name">Name:</label>
-        <input type="text" id="name" placeholder="Tag Name" name="name" value="{{tag.name}}">
+        <input type="text" id="name" placeholder="Tag Name" name="name" value="{{tag.name}}" required>
         <label>
-            Active?:<input type="checkbox" name="active" {% if tag.active %} checked {% endif %}> 
+            Active? <input type="checkbox" name="active" {% if tag.active %} checked {% endif %}> 
         </label>
         <button type="submit">Update Tag</button>
     </form>
-
-    <h1>Transactions {{tag.name}}</h1>
+    <p><em>{{tag.name}}</em> tag is <strong>{% if tag.active %} active{% else %} inactive{% endif %}</strong>.</p>
+    
+    <h1>{{tag.name}}'s Transactions</h1>
 
     <table id = "merchants-tags">
         <tr>
@@ -20,20 +21,14 @@
             <th>Merchant</th>
             <th>Date</th>
             <th>Comments</th>
-            <th>Delete</th>
         </tr>
         {% for transaction in transactions  %}
-        <tr> {% print(transaction)%}
+        <tr>
             <td>{{transaction.amount}}</td>
             <td>{{transaction.tag.name}}</td>
             <td>{{transaction.merchant.name}}</td>
             <td>{{transaction.fecha}}</td>
-            <td>{{transaction.comments}}</td>
-            <td>
-                <form class = "delete-form" action = "/" method = "POST">
-                    <button type = "submit">Delete</button>
-                </form>
-            </td>        
+            <td>{{transaction.comments}}</td>   
         </tr>
         {% endfor %}
     </table>
