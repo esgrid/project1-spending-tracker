@@ -23,7 +23,7 @@
     
         {% for tag in tags  %}
             <tr>
-                <td><a href = "/merchants/edit/{{merchant.id}}">{{tag.name}}</a></td>
+                <td><a href = "/tags/edit/{{tag.id}}">{{tag.name}}</a></td>
                 <td>{% if  tag.active %} &checkmark; {% else %} &cross; {% endif %}</td>
                 <td>
                     <form class = "delete-form" action = "/" method = "POST">
