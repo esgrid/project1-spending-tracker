@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/style1.css') }}">
     <title>Spending Tracker</title>
 </head>
 <body>
@@ -18,12 +19,17 @@
             </ul>
         </nav>
     </header>
+
     <div class = "container">
+
         {% block content %}
+
         {% endblock %}
+
     </div>
+
     <footer>
-        <p>&copy; Esgrid Sikahall</p>
+        <p>&copy; Esgrid Sikahall [2021]</p>
     </footer>
 </body>
 </html>

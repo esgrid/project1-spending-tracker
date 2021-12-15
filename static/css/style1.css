@@ -1,0 +1,31 @@
+#merchants-tags {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+#merchants-tags td, #merchants-tags th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+#merchants-tags tr:nth-child(even){background-color: #f2f2f2;}
+  
+#merchants-tags tr:hover {background-color: #ddd;}
+  
+#merchants-tags th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #56a8c9;
+    color: white;
+}
+
+#merchants-tags a {
+    text-decoration: none;
+    color:black;
+}
+
+#merchants-tags a:hover {
+    color:rgb(22, 102, 102);
+}

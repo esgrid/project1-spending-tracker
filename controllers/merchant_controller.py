@@ -1,5 +1,6 @@
 from flask import Flask, Blueprint, render_template, request, redirect
 import repositories.merchant_repository as merchant_repository
+from models.merchants import Merchant
 
 merchants_blueprint = Blueprint("merchants", __name__)
 
@@ -16,7 +17,11 @@ def show_merchant(id):
     transactions = merchant_repository.transactions(merchant)
     return render_template('merchants/show.html', merchant = merchant, transactions = transactions)
 
-# maybe not needed -- if the form is in the index
-# @merchants_blueprint.route('/merchants')
-# def new_merchant():
+
+@merchants_blueprint.route('/merchants', methods = ['POST'])
+def create_merchant():
+    form = request.form
+    active = True if 'active' in form else False
+    merchant_repository.save(Merchant(form['name'], active))
+    return redirect('/merchants')
 

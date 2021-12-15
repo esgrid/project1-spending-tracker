@@ -2,6 +2,39 @@
 
 {% block content%}
 
+<form class="form-inline" method = "post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Tag Name" name="name">
+    <label>
+      <input type="checkbox" name="active"> Active
+    </label>
+    <button type="submit">Add Tag</button>
+</form>
 
+<!-- <ul> -->
+    <h1>Tags</h1>
+
+    <table id = "merchants-tags">
+    <tr>
+        <th>Tag</th>
+        <th>Active Status</th>
+        <th>Delete</th>
+    </tr>
+    
+        {% for tag in tags  %}
+            <tr>
+                <td><a href = "/merchants/edit/{{merchant.id}}">{{tag.name}}</a></td>
+                <td>{% if  tag.active %} &checkmark; {% else %} &cross; {% endif %}</td>
+                <td>
+                    <form class = "delete-form" action = "/" method = "POST">
+                        <button type = "submit">Delete Tag</button>
+                    </form>
+                </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+<!-- </ul> -->
+  
 
 {% endblock  %}

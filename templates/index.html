@@ -7,7 +7,7 @@
     </header>
     <main>
         {% if budget != '' %}
-            <p>Your chosen budget is £{{budget.alloted}}</p>
+            <p>Your chosen budget is <a href = "/">£{{budget.alloted}}</a></p>
         {% else %}
         <form action = "/budget" method = "post">
             <div>
