@@ -9,14 +9,12 @@ def merchants():
     merchants = merchant_repository.select_all()
     return render_template('merchants/index.html', merchants = merchants)
 
-
 # To be able to show all the transactions to this merchant besides the details of the merchant
 @merchants_blueprint.route('/merchants/<id>')
 def show_merchant(id):
     merchant = merchant_repository.select(id)
     transactions = merchant_repository.transactions(merchant)
     return render_template('merchants/show.html', merchant = merchant, transactions = transactions)
-
 
 @merchants_blueprint.route('/merchants', methods = ['POST'])
 def create_merchant():

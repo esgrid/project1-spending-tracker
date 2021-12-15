@@ -22,7 +22,7 @@ def select(id):
 
 def transactions(merchant):
     results = run_sql('SELECT * FROM transactions WHERE merchant_id = %s', [merchant.id])
-    return [Transaction(r['amount'], tag_repository.select(r['tag_id']), merchant.id, r['fecha'], r['comments'], r['id']) for r in results]
+    return [Transaction(r['amount'], tag_repository.select(r['tag_id']), merchant, r['fecha'], r['description'], r['id']) for r in results]
 
 def update(merchant):
     sql = 'UPDATE merchants SET (name, active) = (%s, %s) WHERE id = %s'

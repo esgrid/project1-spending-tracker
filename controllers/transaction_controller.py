@@ -14,7 +14,11 @@ transactions_blueprint = Blueprint('transactions', __name__)
 @transactions_blueprint.route('/transactions')
 def transactions():
     transactions = transaction_repository.select_all()
-    return render_template('transactions/index.html', transactions = transactions)
+    merchants = merchant_repository.select_all()
+    tags = tag_repository.select_all()
+    total = sum([transaction.amount for transaction in transactions])
+    budget = budget_repository.select_all()[0]
+    return render_template('transactions/index.html', transactions = transactions, tags = tags, merchants = merchants, total = total, budget = budget)
 
 # The route GETS something (the id)
 @transactions_blueprint.route('/transactions/<id>')

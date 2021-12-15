@@ -1,40 +1,40 @@
 {% extends "base.html" %}
 
-{% block content%}
+{% block content %}
 
-<form class="form-inline" method = "post" action = "edit/{{tag.id}}">
-    <label for="name">Name:</label>
-    <input type="text" id="name" placeholder="Tag Name" name="name" value="{{tag.name}}">
-    <label>
-      <input type="checkbox" name="active" {% if tag.active %} checked {% endif %}> Active?: 
-    </label>
-    <button type="submit">Update Tag</button>
-</form>
+    <form class="form-inline" method = "post" action = "edit/{{tag.id}}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Tag Name" name="name" value="{{tag.name}}">
+        <label>
+            Active?:<input type="checkbox" name="active" {% if tag.active %} checked {% endif %}> 
+        </label>
+        <button type="submit">Update Tag</button>
+    </form>
 
-<!-- <ul> -->
-    <h1>Transactions</h1>
+    <h1>Transactions {{tag.name}}</h1>
 
-    <!-- <table id = "tags-tags">
-    <tr>
-        <th>Tag</th>
-        <th>Active Status</th>
-        <th>Delete</th>
-    </tr>
-    
-        {% for tag in tags  %}
-            <tr>
-                <td><a href = "/tags/{{tag.id}}">{{tag.name}}</a></td>
-                <td>{% if  tag.active %} &checkmark; {% else %} &cross; {% endif %}</td>
-                <td>
-                    <form class = "delete-form" action = "/" method = "POST">
-                        <button type = "submit">Delete Tag</button>
-                    </form>
-                </td>
-            </tr>
-
+    <table id = "merchants-tags">
+        <tr>
+            <th>Amount</th>
+            <th>Tag</th>
+            <th>Merchant</th>
+            <th>Date</th>
+            <th>Comments</th>
+            <th>Delete</th>
+        </tr>
+        {% for transaction in transactions  %}
+        <tr> {% print(transaction)%}
+            <td>{{transaction.amount}}</td>
+            <td>{{transaction.tag.name}}</td>
+            <td>{{transaction.merchant.name}}</td>
+            <td>{{transaction.fecha}}</td>
+            <td>{{transaction.comments}}</td>
+            <td>
+                <form class = "delete-form" action = "/" method = "POST">
+                    <button type = "submit">Delete</button>
+                </form>
+            </td>        
+        </tr>
         {% endfor %}
-    </table> -->
-<!-- </ul> -->
-  
-
+    </table>
 {% endblock  %}
