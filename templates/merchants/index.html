@@ -27,7 +27,7 @@
                 <td>{% if  merchant.active %} &checkmark; {% else %} &cross; {% endif %}</td>
                 <td>
                     <form class = "delete-form" action = "merchants/delete/{{merchant.id}}" method = "POST">
-                        <button type = "submit">Delete Merchant</button>
+                        <button type = "submit" disabled>Delete Merchant</button>
                     </form>
                 </td>
             </tr>

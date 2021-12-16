@@ -27,7 +27,7 @@
                 <td>{% if  tag.active %} &checkmark; {% else %} &cross; {% endif %}</td>
                 <td>
                     <form class = "delete-form" action = "/tags/delete/{{tag.id}}" method = "POST">
-                        <button type = "submit">Delete Tag</button>
+                        <button type = "submit" disabled>Delete Tag</button>
                     </form>
                 </td>
             </tr>
