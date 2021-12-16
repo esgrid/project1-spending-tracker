@@ -2,13 +2,6 @@
 
 {% block content%}
 
-<!-- self.amount = amount
-self.tag = tag
-self.merchant = merchant
-self.fecha = fecha
-self.comments = comments
-self.id = id -->
-
 <form class="form-inline" method = "post">
     <label for="amount">Amount: </label>
     <input type="number" step="0.01" id="amount" placeholder="Transaction Amount" name="amount" placeholder = "£" required autofocus>
@@ -42,9 +35,9 @@ self.id = id -->
 
 <hgroup>
     <h1>Transactions</h1>
-    <h2>Budget: £{{budget.alloted}}</h2>
+    <h2>Budget: £{{budget}}</h2>
     <h3>Total Spent: £{{total}}</h3>
-    <h4>Remaining budget: £{{budget.alloted - total}}</h4>
+    <h4>Remaining budget: £{{left}}</h4>
 </hgroup>
 
     <table id = "merchants-tags">
@@ -61,10 +54,10 @@ self.id = id -->
         <td><a href="/transactions/{{transaction.id}}">{{transaction.amount}}</a></td>
         <td>{{transaction.tag.name}}</td>
         <td>{{transaction.merchant.name}}</td>
-        <td>{{transaction.fecha}}</td>
+        <td>{{transaction.fecha.strftime("%A %d %B %Y")}}</td>
         <td>{{transaction.comments}}</td>
         <td>
-            <form class = "delete-form" action = "/" method = "POST">
+            <form class = "delete-form" action = "/transactions/delete/{{transaction.id}}" method = "POST">
                 <button type = "submit">Delete</button>
             </form>
         </td>        

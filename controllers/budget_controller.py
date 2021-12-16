@@ -18,6 +18,13 @@ budget_blueprint = Blueprint('budget', __name__)
 def create_budget():
     form = request.form
     amount = form['budget']
-    budget = Budget(amount)
-    budget = budget_repository.save(budget)
+    budget = budget_repository.save(Budget(amount))
     return render_template('/index.html', budget = budget)
+
+@budget_blueprint.route('/budget/<id>', methods = ['POST'])
+def change_budget(id):
+    form = request.form
+    budget_repository.update(Budget(form['budget'], id))
+    budget = budget_repository.select(id)
+    return render_template('/index.html', budget = budget)
+

@@ -26,7 +26,7 @@
                 <td><a href = "/tags/{{tag.id}}">{{tag.name}}</a></td>
                 <td>{% if  tag.active %} &checkmark; {% else %} &cross; {% endif %}</td>
                 <td>
-                    <form class = "delete-form" action = "/" method = "POST">
+                    <form class = "delete-form" action = "/tags/delete/{{tag.id}}" method = "POST">
                         <button type = "submit">Delete Tag</button>
                     </form>
                 </td>

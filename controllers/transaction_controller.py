@@ -16,9 +16,10 @@ def transactions():
     transactions = transaction_repository.select_all()
     merchants = merchant_repository.select_all()
     tags = tag_repository.select_all()
-    total = sum([transaction.amount for transaction in transactions])
-    budget = budget_repository.select_all()[0]
-    return render_template('transactions/index.html', transactions = transactions, tags = tags, merchants = merchants, total = total, budget = budget)
+    total = round(sum([transaction.amount for transaction in transactions]), 2)
+    budget = round(budget_repository.select_all()[0].alloted, 2)
+    left = round(budget - total, 2)
+    return render_template('transactions/index.html', transactions = transactions, tags = tags, merchants = merchants, total = total, budget = budget, left = left)
 
 # The route GETS something (the id)
 @transactions_blueprint.route('/transactions/<id>')
@@ -28,7 +29,7 @@ def show_transaction(id):
     tags = tag_repository.select_all()    
     return render_template('/transactions/show.html', transaction = transaction, merchants = merchants, tags = tags)
 
-# # The route GETS something -- not needed if the form is in the index
+# # The route GETS something -- not needed if the form is in the index.html
 # @transactions_blueprint.route('/transactions/new', methods = ['GET'])
 # def new_transaction():
 #     merchants = merchant_repository.select_all()
@@ -49,16 +50,16 @@ def create_transaction():
     transaction_repository.save(transaction)
     return redirect('/transactions')
 
-# The route gets something to be EDITED
-@transactions_blueprint.route('/transaction/edit/<id>', methods = ['GET'])
-def edit_transaction(id):
-    transaction = transaction_repository.select(id)
-    merchants = merchant_repository.select_all()
-    tags = tag_repository.select_all()
-    return render_template('/transactions/edit.html', transaction = transaction, merchants = merchants, tags = tags)
+# The route gets something to be EDITED - not needed if the form is in show.html
+# @transactions_blueprint.route('/transaction/edit/<id>', methods = ['GET'])
+# def edit_transaction(id):
+#     transaction = transaction_repository.select(id)
+#     merchants = merchant_repository.select_all()
+#     tags = tag_repository.select_all()
+#     return render_template('/transactions/edit.html', transaction = transaction, merchants = merchants, tags = tags)
 
 # The route POSTS something to be UPDATED
-@transactions_blueprint.route('/transactions/<id>', methods = ['POST'])
+@transactions_blueprint.route('/transactions/edit/<id>', methods = ['POST'])
 def update_transaction(id):
     form = request.form
     amount = form['amount']
@@ -69,10 +70,10 @@ def update_transaction(id):
     comments = form['comments']
     transaction = Transaction(amount, tag, merchant, when, comments, id)
     transaction_repository.update(transaction)
-    return redirect('/transactions')
+    return redirect(f'/transactions/{id}')
 
 # The route POSTS something to be DELETED
 @transactions_blueprint.route('/transactions/delete/<id>', methods = ['POST'])
 def delete_transaction(id):
     transaction_repository.delete(id)
-    return redirect('/transaction')
+    return redirect('/transactions')

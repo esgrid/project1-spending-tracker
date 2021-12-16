@@ -4,17 +4,16 @@
 <article class = "budget">
         <h1>Welcome to your spending tracker app</h1>
     <main>
-        {% if budget != '' %}
-            <p>Your chosen budget is <a href = "/">£{{budget.alloted}}</a></p>
-        {% else %}
-        <form action = "/budget" method = "post">
+
+        <form class = "form-inline" action = {% if budget == '' %} "/budget" {% else %} "/budget/{{budget.id}}" {% endif %} method = "post">
             <div>
                 <label for = "budget">My budget is:</label>
-                <input type = "number" step = 0.01 id = "budget" name = "budget" placeholder = "£" required autofocus>
+                <input type = "number" step = 0.01 id = "budget" name = "budget" {% if budget == '' %} placeholder = "£" {% else %} value = "{{budget.alloted}}" {% endif %} required autofocus>
             </div>
             <button type = "submit">Set Budget</button>
-        </form>            
-        {% endif %}
+        </form>
+        <p>Your chosen budget is £{{budget.alloted}}</p>
+        
     </main>
 </article>
 {% endblock %}

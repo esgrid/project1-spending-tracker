@@ -27,7 +27,7 @@
             <td>{{transaction.amount}}</td>
             <td>{{transaction.tag.name}}</td>
             <td>{{transaction.merchant.name}}</td>
-            <td>{{transaction.fecha}}</td>
+            <td>{{transaction.fecha.strftime("%A %d %B %Y")}}</td>
             <td>{{transaction.comments}}</td>   
         </tr>
         {% endfor %}

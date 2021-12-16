@@ -26,7 +26,7 @@
                 <td><a href = "/merchants/{{merchant.id}}">{{merchant.name}}</a></td>
                 <td>{% if  merchant.active %} &checkmark; {% else %} &cross; {% endif %}</td>
                 <td>
-                    <form class = "delete-form" action = "/" method = "POST">
+                    <form class = "delete-form" action = "merchants/delete/{{merchant.id}}" method = "POST">
                         <button type = "submit">Delete Merchant</button>
                     </form>
                 </td>

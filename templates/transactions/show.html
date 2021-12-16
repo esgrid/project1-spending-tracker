@@ -32,8 +32,8 @@
     <button type="submit">Update Transaction</button>
 </form>
 
-    <p>You spent <em>{{transaction.amount}}</em> on <strong>{{transaction.tag.name}}</strong> in <strong>{{transaction.merchant.name}}</strong> on {{transaction.fecha}}.</p>
-    <p>Additional Comments: {{transaction.comments}}</p>
+    <p>You spent <em>{{transaction.amount}}</em> on <strong>{{transaction.tag.name}}</strong> in <strong>{{transaction.merchant.name}}</strong> on {{transaction.fecha.strftime("%A %d %B %Y")}}.</p>
+    <p>Additional Comments:  {{transaction.comments}}</p>
     
 {% endblock  %}
 
