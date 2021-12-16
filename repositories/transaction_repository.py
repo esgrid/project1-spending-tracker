@@ -20,7 +20,7 @@ def select(id):
     transaction = None
     result = run_sql("SELECT * FROM transactions WHERE id = %s", [id])[0]
     if result is not None:
-        transaction = Transaction(result['amount'], result['tag'], result['merchant'], result['fecha'], result['description'], result['id'])
+        transaction = Transaction(result['amount'], tag_repository.select(result['tag_id']), merchant_repository.select(result['merchant_id']), result['fecha'], result['description'], result['id'])
     return transaction
 
 def update(transaction):

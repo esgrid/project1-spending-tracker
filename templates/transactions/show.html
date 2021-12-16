@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form class="form-inline" method = "post" action = "edit/{{transaction.id}}">
+    <label for="amount">Amount: </label>
+    <input type="number" step="0.01" id="amount" placeholder="Transaction Amount" name="amount" value="{{transaction.amount}}" required autofocus>
+
+    <label for="tag">Tag: </label>
+    <select id="tag" name="tag_id" required>
+        <option value="{{transaction.tag.id}}"> {{transaction.tag.name}}</option>
+        {% for tag in tags  %}
+            {% if tag.active and transaction.tag.id != tag.id %}
+            <option value="{{ tag.id }}"> {{ tag.name }} </option>            
+            {% endif %}            
+        {% endfor %}
+    </select>
+    <label for="merchant">Merchant: </label>
+    <select id="merchant" name="merchant_id" required>
+        <option value="{{transaction.merchant.id}}">{{transaction.merchant.name}}</option>
+        {% for merchant in merchants  %}
+            {% if merchant.active and transaction.merchant.id != merchant.id%}
+            <option value="{{ merchant.id }}"> {{ merchant.name }} </option>    
+            {% endif %}
+            
+        {% endfor %}
+    </select>
+    <label for="fecha">Date: </label>
+    <input type="date" id="fecha" name="fecha" required value = "{{transaction.fecha}}">        
+    <label for="comments">Comments: </label>
+    <input type="text" id="comments" value = "{{transaction.comments}}" name="comments">
+    <button type="submit">Update Transaction</button>
+</form>
+
+    <p>You spent <em>{{transaction.amount}}</em> on <strong>{{transaction.tag.name}}</strong> in <strong>{{transaction.merchant.name}}</strong> on {{transaction.fecha}}.</p>
+    <p>Additional Comments: {{transaction.comments}}</p>
+    
+{% endblock  %}
+

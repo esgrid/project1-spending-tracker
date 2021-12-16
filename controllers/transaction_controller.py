@@ -24,7 +24,9 @@ def transactions():
 @transactions_blueprint.route('/transactions/<id>')
 def show_transaction(id):
     transaction = transaction_repository.select(id)
-    return render_template('/transactions/show.html', transaction = transaction)
+    merchants = merchant_repository.select_all()
+    tags = tag_repository.select_all()    
+    return render_template('/transactions/show.html', transaction = transaction, merchants = merchants, tags = tags)
 
 # # The route GETS something -- not needed if the form is in the index
 # @transactions_blueprint.route('/transactions/new', methods = ['GET'])
