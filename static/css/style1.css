@@ -103,6 +103,7 @@ nav a:hover {
     background-color: #56a8c9;
     border: 1px solid #ddd;
     color: white;
+    border-radius: 4px;
   }
   
   button:hover {
