@@ -6,6 +6,7 @@ meaning that they can't be selected when adding a transaction. Transactions can 
 Commands to initialise:
 
 createdb spending_tracker
+
 psql -d spending_tracker -f db/spending_tracker.sql
 
-Run console.py
+Run console.py and app.py
